@@ -1,0 +1,46 @@
+{% load staticfiles %}
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}My Journal{% endblock %}</title>
+    <meta name="description" content="Your personal online journal">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'core/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+  </head>
+  <body>
+    {% block nav %}
+    <nav class="navbar navbar-default">
+      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-7">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'index' %}">MyJournal</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-7">
+          <ul class="nav navbar-nav">
+            <li class="{% block home %}{% endblock %}"><a href="{% url 'index' %}">Home</a></li>
+            <li class="{% block new %}{% endblock %}"><a href="{% url 'new' %}">New Entry</a></li>
+            {# <li><a href="#">Link</a></li> #}
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+    {% endblock %}
+
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+
+  </body>
+</html>

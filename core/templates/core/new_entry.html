@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block new %}active{% endblock %}
+
+{% block content %}
+
+<h1>New Entry</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'create' %}" method="post">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="email" class="form-control" id="title" placeholder="Hello World!" value="{{ entry.title|default:"" }}" name="title">
+  </div>
+  <div class="form-group">
+    <label for="content">Content</label>
+    <textarea class="form-control" rows="10" name="content" id="content">{{ entry.content|default:"" }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+{% endblock %}
