@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>New Entry</h1>
+
+{% if error_message %}
+<div class="alert alert-danger" role="alert">
+  <strong>Error: </strong>
+  {{ error_message }}
+</div>
+{% endif %}
+
+<form action="{% url 'update' journal.id %}" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" value="{{ journal.title }}" name="title">
+  </div>
+  <div class="form-group">
+    <label for="content">Content</label>
+    <textarea class="form-control" rows="10" name="content" id="content">{{ journal.content }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+{% endblock %}

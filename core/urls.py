@@ -9,8 +9,15 @@ urlpatterns = patterns('',
 
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name="detail"),
 
+    url(r'^delete/(?P<pk>\d+)/$', views.delete, name="delete"),
+
+    url(r'^edit/(?P<pk>\d+)/$', views.EditView.as_view(), name="edit"),
+
+    url(r'^update/(?P<pk>\d+)/$', views.update, name="update"),
+
     url(r'^new/$', views.new_form, name="new"),
 
     url(r'^create/$', views.new, name="create"),
+
 
 )
